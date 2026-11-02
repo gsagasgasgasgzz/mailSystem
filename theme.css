@@ -1,0 +1,108 @@
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #252a31;
+  --light: #30363f;
+  --navy: #e8e1d4;
+  --red: #d997a1;
+  --gold: #b49c6d;
+  --muted: #b7b1a7;
+  --line: #565047;
+}
+
+:root[data-theme="dark"] body {
+  background: radial-gradient(ellipse at 20% 0%, #353943 0, transparent 48%),
+    linear-gradient(120deg, #1d2229, #292d34 60%, #20252c);
+}
+
+:root[data-theme="dark"] .seal,
+:root[data-theme="dark"] .stats > div,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .secondary,
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea {
+  background: #30353d;
+}
+
+:root[data-theme="dark"] .eyebrow {
+  color: #c4a86d;
+}
+
+:root[data-theme="dark"] .status {
+  border-color: #696458;
+}
+
+:root[data-theme="dark"] .status.online {
+  color: #9ac9a7;
+  border-color: #668a70;
+}
+
+:root[data-theme="dark"] .status.offline,
+:root[data-theme="dark"] #message.error,
+:root[data-theme="dark"] .error {
+  color: #f0a0a0;
+}
+
+:root[data-theme="dark"] .status.offline {
+  border-color: #a56d6d;
+}
+
+:root[data-theme="dark"] .tab.active {
+  background: #474039;
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea {
+  border-color: #625b50;
+}
+
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+  color: #aaa397;
+}
+
+:root[data-theme="dark"] .record {
+  border-bottom-color: #48443d;
+}
+
+:root[data-theme="dark"] footer {
+  color: #b7a37d;
+}
+
+:root[data-theme="dark"] dialog {
+  background: var(--paper);
+}
+
+:root[data-theme="dark"] dialog::backdrop {
+  background: #090c10c9;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.theme-toggle {
+  white-space: nowrap;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (max-width: 650px) {
+  .header-actions {
+    align-items: flex-end;
+    flex-direction: column-reverse;
+    gap: 7px;
+  }
+
+  .theme-toggle {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}

@@ -34,3 +34,5 @@ A parchment-themed, Thai-language shared letter-number registry. No accounts. Ev
 ## Design
 
 Parchment/ivory dominant, deep navy, burgundy, antique gold, serif headings; no heavy black box shadows.
+
+The interface supports dark mode with a header toggle. On first visit, it follows the operating system's color preference; afterward, the chosen theme is saved in the browser.
