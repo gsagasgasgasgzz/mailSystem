@@ -110,7 +110,7 @@ Deno.serve(async (req: Request) => {
           db
             .from("letters")
             .select(
-              "id,number_key,number_display,owner,note,version,created_at,updated_at,deleted_at"
+              "id,number_key,number_display,owner,year,friend_of,note,version,created_at,updated_at,deleted_at"
             )
             .order("number_key", { ascending: true })
             .limit(3000),
@@ -158,6 +158,28 @@ Deno.serve(async (req: Request) => {
         typeof body.owner !== "string" ||
         !body.owner.trim() ||
         body.owner.length > 100 ||
+        !(
+          body.year === null ||
+          (
+            typeof body.year === "number" &&
+            Number.isInteger(body.year) &&
+            body.year >= 2001 &&
+            body.year <= new Date().getFullYear()
+          )
+        ) ||
+        !(
+          body.friend_of === undefined ||
+          (
+            Array.isArray(body.friend_of) &&
+            body.friend_of.length <= 30 &&
+            body.friend_of.every(
+              (name) =>
+                typeof name === "string" &&
+                name.trim().length > 0 &&
+                name.trim().length <= 100,
+            )
+          )
+        ) ||
         typeof body.note !== "string" ||
         body.note.length > 500
       ) {
@@ -204,6 +226,16 @@ Deno.serve(async (req: Request) => {
           typeof body.owner === "string"
             ? body.owner
             : null,
+        p_year:
+          typeof body.year === "number"
+            ? body.year
+            : null,
+        p_friend_of:
+          Array.isArray(body.friend_of)
+            ? body.friend_of.map((name) =>
+              typeof name === "string" ? name.trim() : ""
+            )
+            : [],
         p_note:
           typeof body.note === "string"
             ? body.note

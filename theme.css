@@ -51,13 +51,19 @@
 }
 
 :root[data-theme="dark"] input,
-:root[data-theme="dark"] textarea {
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select {
   border-color: #625b50;
 }
 
 :root[data-theme="dark"] input::placeholder,
 :root[data-theme="dark"] textarea::placeholder {
   color: #aaa397;
+}
+
+:root[data-theme="dark"] select {
+  background: #30353d;
+  color: var(--navy);
 }
 
 :root[data-theme="dark"] .record {

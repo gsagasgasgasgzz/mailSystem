@@ -40,9 +40,31 @@
           </div>
           <div class="tools">
             <input id="search" type="search" placeholder="ค้นหาเลขจดหมาย ชื่อ หรือหมายเหตุ...">
+            <button id="toggleFilters" class="filter-toggle secondary" type="button" aria-expanded="false" aria-controls="filters">
+              <span aria-hidden="true">☷</span> ตัวกรอง <span id="filterCount" class="filter-count" hidden>0</span>
+            </button>
             <button id="refresh" class="secondary">↻ รีเฟรช</button>
             <button id="export" class="secondary">⇩ ส่งออก CSV</button>
           </div>
+          <section id="filters" class="filters" aria-label="ตัวกรองทะเบียน" hidden>
+            <div class="filter-heading">
+              <div>
+                <strong>กรองรายการทะเบียน</strong>
+                <p>เลือกปีและหมวดหมู่เพื่อนที่ต้องการดู</p>
+              </div>
+              <button id="clearFilters" class="clear-filters" type="button">ล้างที่เลือก</button>
+            </div>
+            <div class="filter-groups">
+              <div class="filter-group">
+                <h2>เลือกปี</h2>
+                <div id="yearFilters" class="checkbox-list"></div>
+              </div>
+              <div class="filter-group">
+                <h2>จดหมายเป็นเพื่อนของ</h2>
+                <div id="friendCategoryFilters" class="friend-categories"></div>
+              </div>
+            </div>
+          </section>
           <p id="message" role="status"></p>
           <div id="records" class="records"></div>
           <div id="empty" class="empty" hidden>ยังไม่มีข้อมูลในหมวดนี้</div>
@@ -58,6 +80,16 @@
         </div>
         <label>เลขจดหมาย <span>*</span><input id="number" inputmode="numeric" pattern="[0-9]{1,8}" maxlength="8" required placeholder="เช่น 0024"></label>
         <label>ชื่อเจ้าของ <span>*</span><input id="owner" maxlength="100" required placeholder="ชื่อตัวละคร"></label>
+        <label>ปี <select id="year"><option value="">ไม่ระบุปี</option></select></label>
+        <fieldset class="friend-picker">
+          <legend>จดหมายนี้เป็นเพื่อนของใคร</legend>
+          <p class="field-hint">เลือกได้หลายคน โดยชื่อเจ้าของจดหมายยังคงเป็นข้อมูลแยกกัน</p>
+          <div id="friendChoices" class="friend-choices"></div>
+          <div class="add-friend">
+            <input id="newFriendName" maxlength="100" placeholder="เพิ่มชื่อเพื่อนใหม่">
+            <button id="addFriendName" class="secondary" type="button">＋ เพิ่มชื่อ</button>
+          </div>
+        </fieldset>
         <label>หมายเหตุ<textarea id="note" maxlength="500" rows="3" placeholder="ข้อมูลเพิ่มเติม (ถ้ามี)"></textarea></label>
         <p class="hint">เลข 0001 และ 1 ถือเป็นหมายเลขเดียวกัน ระบบจะป้องกันเลขซ้ำ</p>
         <p id="formError" class="error" role="alert"></p>
